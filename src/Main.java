@@ -22,7 +22,7 @@ public class Main {
 
             Account account = new Account(accountNumber, initialValue);
             boolean accountVerify = banco01.addAccount(account);
-            if(accountVerify == false){
+            if(!accountVerify){
                 System.out.println("Nome repetido, está conta não será registrada.");
             }
         }
@@ -33,7 +33,7 @@ public class Main {
 
         Account account = banco01.getAccount(accountNumber);
 
-        if (account.getAccountNumber() == null) {
+        if (account == null) {
             throw new RuntimeException("Número da conta inexistente.");
         }
         int numberToWithdrawOrDeposit;
@@ -50,7 +50,7 @@ public class Main {
                 double valueToWithdraw = input.nextInt();
 
                 boolean withdrawResult = account.withdraw(valueToWithdraw);
-                if (withdrawResult == false) {
+                if (!withdrawResult) {
                     System.out.println("Saldo insuficiente.");
                 } else {
                     System.out.println("Saque feito com sucesso, seu saldo agora é de: R$ " + account.getBalance());
@@ -67,10 +67,9 @@ public class Main {
 
             } else {
                 System.out.println("Número inválido!!!");
-                numberToWithdrawOrDeposit = 1;
             }
             System.out.println("");
-        } while (numberToWithdrawOrDeposit == 1 || numberToWithdrawOrDeposit == 2);
+        } while (numberToWithdrawOrDeposit != 3);
         System.out.println(banco01.getName());
         System.out.println(account);
 

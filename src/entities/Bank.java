@@ -10,7 +10,7 @@ public class Bank {
 
     }
 
-    public Bank(String name){
+    public Bank(String name) {
         this.name = name;
     }
 
@@ -18,23 +18,21 @@ public class Bank {
         return name;
     }
 
-    public Account getAccount(int numeroDaConta){
-        Account accountToReturn = new Account();
+    public Account getAccount(int accountNumber) {
 
-        for (Account x: accountList) {
-            if(x.getAccountNumber() == numeroDaConta){
-                accountToReturn = x;
-                break;
+        for (Account account : accountList) {
+            if (account.getAccountNumber() == accountNumber) {
+                return account;
             }
         }
 
-        return accountToReturn;
+        return null;
     }
 
     public boolean addAccount(Account account) {
-        for (Account x : accountList) {
+        for (Account accountAnother : accountList) {
             int accountNumber = account.getAccountNumber();
-            int anotherNumber = x.getAccountNumber();
+            int anotherNumber = accountAnother.getAccountNumber();
             if (anotherNumber == accountNumber) {
                 return false;
 
@@ -43,7 +41,6 @@ public class Bank {
         accountList.add(account);
         return true;
     }
-
 
 
 }
